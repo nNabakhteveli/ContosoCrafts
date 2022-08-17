@@ -10,7 +10,10 @@ public class Product
     
     [JsonPropertyName("maker")]
     public string Maker { get; set; }
-    
+
+    [JsonPropertyName("img")]
+    public string Image { get; set; }
+
     [JsonPropertyName("url")]
     public string Url { get; set; }
     
