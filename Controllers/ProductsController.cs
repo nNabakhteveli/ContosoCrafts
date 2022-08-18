@@ -11,11 +11,13 @@ namespace ContosoCrafts.Controllers;
 [ApiController]
 public class ProductsController : ControllerBase
 {
-    public JsonFileProductService ProductService { get; }
+    private JsonFileProductService ProductService { get; }
+    private IWebHostEnvironment WebHostEnvironment { get; }
     
-    public ProductsController(JsonFileProductService productService)
+    public ProductsController(JsonFileProductService productService, IWebHostEnvironment webHostEnvironment)
     {
         this.ProductService = productService;
+        WebHostEnvironment = webHostEnvironment;
     }
 
     [HttpGet]
@@ -48,7 +50,7 @@ public class ProductsController : ControllerBase
             query.Ratings = productRating.ToArray();
         }
 
-        string pathToJsonFile = @"/Users/nika/Desktop/dotnet/ContosoCrafts/ContosoCrafts/wwwroot/data/products.json";
+        string pathToJsonFile = Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.json");
         using (var outputStream = System.IO.File.OpenWrite(pathToJsonFile))
         {
             JsonSerializer.Serialize<IEnumerable<Product>>(
