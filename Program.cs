@@ -1,3 +1,6 @@
+using System.Text.Json;
+
+using ContosoCrafts.Models;
 using ContosoCrafts.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,5 +27,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();
