@@ -12,6 +12,17 @@ for details on configuring this project to bundle and minify static web assets. 
   opacity: 1;
 }
 
+.card-columns {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 80px;
+}
+
+.card-container {
+  width: 100%;
+  flex-basis: 33.333333%
+}
+
 .card-columns .card-body {
   height: 100px;
   font-family: 'Nunito', sans-serif;
